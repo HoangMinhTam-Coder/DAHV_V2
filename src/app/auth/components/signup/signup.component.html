@@ -1,0 +1,69 @@
+<div class="account section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="login-form border p-5">
+          <div class="text-center heading">
+            <h2 class="mb-2">Sign Up</h2>
+            <p class="lead">Already have an account? <a routerLink="/login"> Login now</a></p>
+          </div>
+
+          <form [formGroup]="signupForm" (ngSubmit)="signUp(signupForm.value)">
+
+            <app-input [classinput]="'mb-4'" [label]="'Email'" formControlName="Email" [type]="'email'"
+              [errors]="signupForm.controls['Email'].errors">
+            </app-input>
+
+            <div class="row">
+              <div class="form-group mb-4 col-6">
+                <label for="#">Enter Username</label>
+                <input type="text" class="form-control" ngModel placeholder="Username" name="Name"
+                  formControlName="Name">
+                <div *ngIf="l['Name'].invalid && (l['Name'].dirty || l['Name'].touched)" class="text-danger">
+                  <div *ngIf="l['Name'].errors?.['pattern']">Name is Character.</div>
+                  <div *ngIf="l['Name'].errors?.['required']">Name is required..</div>
+                </div>
+              </div>
+
+              <div class="form-group mb-4 col-6">
+                <label for="#">Enter Password</label>
+                <input type="text" class="form-control" ngModel placeholder="Password" name="Password"
+                  formControlName="Password">
+                <div *ngIf="l['Password'].invalid && (l['Password'].dirty || l['Password'].touched)"
+                  class="text-danger">
+                  <div *ngIf="l['Password'].errors?.['minlength']">Minimum 2 character are required.</div>
+                  <div *ngIf="l['Password'].errors?.['required']">Password is required..</div>
+                </div>
+              </div>
+            </div>
+
+            <app-input [classinput]="'mb-4'" [label]="'Address'" formControlName="Address" [type]="'text'"
+              [errors]="signupForm.controls['Address'].errors">
+            </app-input>
+
+            <div class="row">
+              <div class="form-group mb-4 col-12 col-md-6">
+                <label for="#">Enter Avatar</label>
+                <input type="text" class="form-control" ngModel placeholder="Avatar" name="Avt" formControlName="Avt">
+                <div *ngIf="l['Avt'].invalid && (l['Avt'].dirty || l['Avt'].touched)" class="text-danger">
+                  <div *ngIf="l['Avt'].errors?.['required']">Avatar is required..</div>
+                </div>
+              </div>
+
+              <div class="form-group mb-4 col-12 col-md-6">
+                <label for="#">Enter Phone</label>
+                <input type="text" class="form-control" ngModel placeholder="Phone Number" name="SDT"
+                  formControlName="SDT">
+                <div *ngIf="l['SDT'].invalid && (l['SDT'].dirty || l['SDT'].touched)" class="text-danger">
+                  <div *ngIf="l['SDT'].errors?.['pattern']">Phone is Number.</div>
+                  <div *ngIf="l['SDT'].errors?.['required']">Phone is required..</div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-main mt-3 btn-block">Signup</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
